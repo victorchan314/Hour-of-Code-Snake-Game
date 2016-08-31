@@ -1,0 +1,653 @@
+<html>
+
+<head>
+
+<title>Hour of Code--Java Snake Game</title>
+
+
+
+<style>
+
+p {
+	font-family:Papyrus;
+	display:inline;
+}
+
+button.next {
+	font-family:Papyrus;
+	background-color:#C0C0C0;
+	color:#000080;
+	float:right;
+	width:10%;
+	height:25px;
+	padding:5px;
+	font-size:15px;
+}
+
+button.previous {
+	font-family:Papyrus;
+	background-color:#C0C0C0;
+	color:#000080;
+	float:right;
+	width:15%;
+	height:25px;
+	padding:5px;
+	font-size:15px;
+}
+
+#title {
+	width:100%;
+	height:20%;
+	float:left;
+	background-color:#000080;
+	color:#C0C0C0;
+}
+
+#templatecode {
+	width:90%;
+	height:40%;
+}
+
+#instructions {
+	width:40%;
+	height:80%;
+	float:left;
+	background-color:#ADD8E6;
+}
+
+#editor {
+	width:60%;
+	height:80%;
+	float:left;
+}
+
+.dir {
+	background-color:#ADD8E6;
+	padding:12px;
+	height:95%;
+	color:#505050;
+}
+
+p.step {
+	font-size:20px;
+}
+
+#js {
+	width:100%;
+	height:100%;
+}
+
+#Snake {
+	width:100%;
+	height:100%;
+}
+
+</style>
+
+
+
+<script>
+
+function load(){
+	for (i=1;i<document.getElementsByClassName("dir").length;i++){
+		document.getElementsByClassName("dir")[i].style.display = "none";
+	}
+}
+
+function next(n){
+	document.getElementsByClassName("dir")[n-1].style.display = "none";
+	document.getElementsByClassName("dir")[n].style.display = "block";
+}
+
+function previous(n){
+	document.getElementsByClassName("dir")[n-1].style.display = "none";
+	document.getElementsByClassName("dir")[n-2].style.display = "block";
+}
+
+function step1(){
+	document.getElementsByClassName("dir")[document.getElementsByClassName("dir").length-1].style.display = "none";
+	next(1);
+}
+
+</script>
+
+
+
+</head>
+
+
+
+<body onload="load()">
+
+<div id="title">
+
+<center style="padding-top:16px;">
+<p style="font-size:75px;">How to Make Snake in Java</p>
+<p style="font-size:30px;padding-left:30px;">by Knodemy</p>
+</center>
+
+</div>
+
+
+
+<div id="instructions">
+
+
+<!--Intro step, description/overview-->
+
+<div class="dir">
+<p class="step">Before You Start</p>
+<button class="next" type="button" onclick="next(1)">Next</button>
+<br><br>
+<p>
+Greetings!
+<br><br>
+Welcome to Knodemy's Hour of Code, where you will learn to create a Snake game in JavaScript!
+<br><br>
+As a quick introduction, you can code HTML, CSS, and JavaScript in the left textarea on the ride side of the screen. Once you hit Run, the webpage will appear in the frame on the right side of the screen. You can edit, Run, and Save your code.
+<br><br>
+The first five steps will be a quick introduction to how to use JavaScript. If you already know the basics, you can skip these steps and start working on the game right away.
+<br><br>
+Thank you for joining us to learn code and have fun!
+</p>
+</div>
+
+<!--End intro-->
+
+
+<!--Begin basic JavaScript Tutorials, Steps 1-5-->
+
+<div class="dir">
+<p class="step">Step 1 - Making Variables</p>
+<button class="next" type="button" onclick="next(2)">Next</button>
+<button class="previous" onclick="previous(2)">Previous</button>
+<br><br>
+<p>
+<ul>
+	<li>Variables can be anything</li>
+	<li>In this game we will primarily use arrays and integers</li>
+	<li>All variables are denoted as a "var"<ul>
+		<li>Ex. var name = 6;<ul>
+			<li>this makes a variable that has the value 6, which is interpreted as an integer</li>
+		</ul></li>
+	</ul></li>
+	<li>Arrays are denoted by [ ]<ul>
+		<li>Ex. var nameOfArray = [1, 5, 6];<ul>
+			<li>This makes an array that has 3 values: 1, 5, 6</li>
+			<li>the name of the array is "nameOfArray"</li>
+		</ul></li>
+		<li>To make a blank array don't put anything in the array<ul>
+			<li>var arrayName = [ ];</li>
+		</ul></li>
+	</ul></li>
+	<li>IMPORTANT: EVERY COMMAND ENDS WITH A SEMICOLON<ul>
+		<li>This means every time you create a variable, execute a function, modify a variable, or a combination of the 3</li>
+	</ul></li>
+</ul>
+</p>
+</div>
+
+<div class="dir">
+<p class="step">Step 2 - Array methods</p>
+<button class="next" onclick="next(3)">Next</button>
+<button class="previous" onclick="previous(3)">Previous</button>
+<br><br>
+<p>
+<ul>
+	<li>Arrays are a lot like lists</li>
+	<li>Each item in an array has an index<ul>
+		<li>The items are ordered from first to last</li>
+		<li>The first item has index 0</li>
+		<li>The last item has index length-1</li>
+	</ul></li>
+	<li>To call a specific item from an array, replace index with the index of the item you want to call<ul>
+		<li>nameOfArray[index]<ul>
+			<li>This gets the item at index "index" in the array named "nameOfArray"</li>
+		</ul></li>
+		<li>Ex.<br>
+		var nameOfArray = [1,5,6];<br>
+		nameOfArray[1] = 2;
+		</li>
+	</ul></li>
+	<li>This changes the 5 in the list to a 2</li>
+	<li>To remove the last item of an array, use the pop() command<ul>
+		<li>Ex.<br>
+		var nameOfArray = [1,5,6];<br>
+		nameOfArray.pop();</li>
+	</ul></li>
+	<li>This makes the list have a length of 2 and have items [1,5]</li>
+</ul>
+</p>
+</div>
+
+<div class="dir">
+<p class="step">Step 2 - Array methods (cont.)</p>
+<button class="next" onclick="next(4)">Next</button>
+<button class="previous" onclick="previous(4)">Previous</button>
+<br><br>
+<p>
+<ul>
+	<li>To add an item to the end of an array, use the push(item) command<ul>
+		<li>Ex.<br>	
+		var nameOfArray = [1,5,6];<br>
+		nameOfArray.push(3);</li>
+	</ul></li>
+	<li>This adds 3 to the end of the array and gives you [1,5,6,3]. The length of the list is 4</li>
+	<li>To remove an item at the beginning of the list, use the shift() command<ul>
+		<li>Ex.<br>
+		var nameOfArray = [1,5,6];<br>
+		nameOfArray.shift();</li>
+	</ul></li>
+	<li>This removes the 1 at the beginning of the list and nameOfArray becomes [5,6]. The length of the list is 2</li>
+	<li>To add an item to the beginning of the list use the unshift(item) method<ul>
+		<li>Ex.<br>
+		var nameOfArray = [1,5,6];<br>
+		nameOfArray.unshift(5);</li>
+	</ul></li>
+	<li>This adds 5 to the beginning of the array and nameOfArray becomes [5,1,5,6]. The length of the list is 4</li>
+</ul>
+</p>
+</div>
+
+<div class="dir">
+<p class="step">Step 3 - Loops and conditionals</p>
+<button class="next" onclick="next(5)">Next</button>
+<button class="previous" onclick="previous(5)">Previous</button>
+<br><br>
+<p>
+<ul>
+	<li>While loops<ul>
+		<li>Give a statement that will be evaluated for truth. At the end of each cycle of the loop, the boolean statement will be evaluated again. If it is false, the loop will break</li>
+		<li>Ex.<br>
+		while(nameOfArray[0] == 1){<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nameOfArray.pop();<br>
+		}</li>
+	</ul></li>
+	<li>This will clear the array one item at a time if the first item is 1</li>
+	<li>For loops<ul>
+		<li>More complex while loop</li>
+		<li>Used for counting</li>
+		<li>Ex.<br>
+		for(i = 0; i<3; i++){<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nameOfArray.push(0);<br>
+		}</li>
+	</ul></li>
+	<li>This is the equivalent of
+	var i = 0;
+	while(i<3){<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nameOfArray.push(0);<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i++;<br>
+	}</li>
+	<li>This adds 3 zeros at the end of the array, one at a time</li>
+</ul>
+</p>
+</div>
+
+<div class="dir">
+<p class="step">Step 3 - Loops and conditionals (cont.)</p>
+<button class="next" onclick="next(6)">Next</button>
+<button class="previous" onclick="previous(6)">Previous</button>
+<br><br>
+<p>
+<ul>
+	<li>If/else if/else<ul>
+		<li>if(condition is true){<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;do stuff;<br>
+		}<br>
+		else if(other condition is true){<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;do stuff here;<br>
+		}<br>
+		else{<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;do this other stuff;<br>
+		}</li>
+	</ul></li>
+	<li>if statements are executed if the condition is true</li>
+	<li>else if statements are executed if all above if and else if conditions are false AND the condition for the current one is true</li>
+	<li>else statements are executed if none of the if or else if statement conditions are met</li>
+</ul>
+</p>
+</div>
+
+<div class="dir">
+<p class="step">Step 4 - Math Commands</p>
+<button class="next" onclick="next(7)">Next</button>
+<button class="previous" onclick="previous(7)">Previous</button>
+<br><br>
+<p>
+<ul>
+	<li>Math.floor(x) rounds x down to the greatest integer less than or equal to x</li>
+	<li>Math.ceil(x) rounds x up to the smallest integer greater than or equal to x</li>
+	<li>Math.random() generates a random number between 0 and 1 inclusively</li>
+	<li>Math.pi() is equal to &pi; (3.14159265...)</li>
+	<li>Math.e() is equal to e (2.718281828...)</li>
+	<li>Math.pow(x,y) is equal to x<sup>y</sup></li>
+	<li>Use these to do math. Each of these returns a number and can be used in other functions</li>
+</ul>
+</p>
+</div>
+
+<div class="dir">
+<p class="step">Step 5 - Keypress</p>
+<button class="next" onclick="next(8)">Next</button>
+<button class="previous" onclick="previous(8)">Previous</button>
+<br><br>
+<p>
+<ul>
+	<li>Make a var to take in a keypress<ul>
+		<li>var x = key.which || key.eventCode;<ul>
+			<li>This converts the key pressed into its keycode<ul>
+				<li>left = 37</li>
+				<li>up = 38</li>
+				<li>right = 39</li>
+				<li>down = 40</li>
+				<li>space = 32</li>
+			</ul></li>
+		</ul></li>
+	</ul></li>
+</ul>
+</p>
+</div>
+
+<!--End basic JavaScript Tutorials, Steps 1-5-->
+
+
+<!--Below is where user gets Snake code and learns how to save code-->
+
+<div class="dir">
+<p class="step">Onto the Game!</p>
+<button class="next" onclick="next(9)">Next</button>
+<button class="previous" onclick="previous(9)">Previous</button>
+<br><br>
+<p>Delete the text in the left textarea in the JS.do Online JavaScript Editor. Copy the following code and paste in the textarea.</p>
+<!--TEXTAREA-->
+<!--TEXTAREA-->
+<!--TEXTAREA-->
+<!--TEXTAREA-->
+<!--TEXTAREA-->
+<center>
+<textarea id="templatecode">
+<html>
+
+
+
+<head>
+
+<title>Snake Game</title>
+
+<style>
+
+#container {
+	background-color:#EEEEFF;
+	width:100%;
+	height:100%;
+}
+
+.snake {
+	width:25px;
+	height:25px;
+	background-color:#0000FF;
+	position:absolute;
+}
+
+#eye {
+	width:5px;
+	height:5px;
+	background-color:#FFFFFF;
+	position:absolute;
+	left:10px;
+	top:10px;
+}
+
+#food {
+	width:25px;
+	height:25px;
+	background-color:#FF0000;
+	position:absolute;
+}
+
+#score {
+	font-size:50px;
+}
+
+</style>
+
+
+
+<script>
+
+var n = 25;
+
+var posx = [];
+var posy = [];
+var w = n * Math.floor(window.innerWidth/n - 1);
+var h = n * Math.floor(window.innerHeight/n - 1);
+var horizontal = w / n;
+var vertical = h / n;
+posx.push(n * Math.floor(horizontal/2));
+posy.push(n * Math.floor(vertical/2));
+
+var score = 0;
+var playing = true;
+
+var foodx = 0;
+var foody = 0;
+
+var direction = [1,0];
+var slither;
+
+function load(){
+	document.getElementById("container").style.width = w;
+	document.getElementById("container").style.height = h;
+	document.getElementsByClassName("snake")[0].style.left = posx[0];
+	document.getElementsByClassName("snake")[0].style.top = posy[0];
+	start();
+}
+
+function start(){
+	playing = true;
+	generateFood();
+	slither = setInterval(move,75);
+}
+
+function generateFood(){
+	<!--INSERT CODE FOR STEP 6 HERE-->
+}
+
+function move(){
+	newHeadX = posx[0] + n * direction[0];
+	newHeadY = posy[0] + n * direction[1];
+	if (newHeadX<0 || newHeadX>w || newHeadY<0 || newHeadY>h){//if the snake crashes into the wall
+		lose();
+	} else if (tangled(newHeadX,newHeadY)==true){//if the snake runs into itself
+		lose();
+	} else if(){
+		<!--CODE FOR EATING THE FOOD-->
+	} else {
+		<!--CODE FOR MOVING WHEN NOT EATING FOOD-->
+	}
+	<!--COMPLETE CODE FOR IF/ELSE IF/ELSE STATEMENT FOR STEP 8 HERE-->
+	for (i=0;i<document.getElementsByClassName("snake").length;i++){
+		document.getElementsByClassName("snake")[i].style.left = posx[i];
+		document.getElementsByClassName("snake")[i].style.top = posy[i];
+	}
+}
+
+function tangled(x,y){
+	var within = false;
+	for (i=0;i<posx.length;i++){
+		if (x==posx[i]&&y==posy[i]){
+			within = true;
+			break;
+		}
+	}
+	return within;
+}
+
+function lose(){
+	playing = false;
+	clearInterval(slither);
+	document.getElementById("container").style.visibility = "hidden";
+	document.getElementById("score").style.visibility = "visible";
+	document.getElementById("score").innerHTML = "GAME OVER<br>Final Score: " + score + "<br>To play again, press SPACE";
+}
+
+function reset(){
+	document.getElementById("container").style.visibility = "visible";
+	posx = [];
+	posy = [];
+	posx.push(n * Math.floor(horizontal/2));
+	posy.push(n * Math.floor(vertical/2));
+	score = -1;
+	incrementScore();
+	direction = [1,0];
+	for (i=document.getElementsByClassName("snake").length-1;i>0;i--){
+	document.getElementById("container").removeChild(document.getElementsByClassName("snake")[i]);
+	}
+}
+
+function incrementScore(){
+	score += 1;
+	document.getElementById("score").innerHTML = "Score: " + score;
+}
+
+function KeyDetect(event){
+	<!--INSERT CODE FOR STEP 7 HERE-->
+}
+
+</script>
+
+
+
+</head>
+
+
+
+<body onload="load()" onkeydown="KeyDetect(event)">
+
+<div id="container">
+
+<p id="score">Score: 0</p>
+
+<div id="food"></div>
+
+<div class="snake" id="head">
+<div id="eye"></div>
+</div>
+
+</div>
+
+</body>
+
+
+
+</html>
+</textarea>
+</center>
+<!--TEXTAREA-->
+<!--TEXTAREA-->
+<!--TEXTAREA-->
+<!--TEXTAREA-->
+<!--TEXTAREA-->
+<br>
+<p>As you scroll through the code you should notice some sections of brown code that start with &lt;!-- and end with --&gt;. These are comments (they get ignored by the computer) and designate locations where code for a specific step should be inserted.</p>
+</div>
+
+<div class="dir">
+<p class="step">Onto the Game!</p>
+<button class="next" type="button" onclick="next(10)">Next</button>
+<button class="previous" onclick="previous(10)">Previous</button>
+<br><br>
+<p>Make sure to hit the Save button every so often (in fact, do so right now too). You will receive a unique ID for your webpage. Make sure to save the ID! You can use it to access your webpage after you finish the game. For example, if your ID is 12345, your code  and webpage will be available at http://js.do/code/12345.</p>
+<br><br><br>
+<p>Have fun with your code!</p>
+</div>
+
+<!--End copying code/final introduction-->
+
+
+<!--Begin actual Snake coding-->
+
+<div class="dir">
+<p class="step">Step 6 - Snake: Generate Food</p>
+<button class="next" onclick="next(11)">Next</button>
+<button class="previous" onclick="previous(11)">Previous</button>
+<br><br>
+<p>
+<ul>
+	<li>Each square has a 25px side length</li>
+	<li>n = 25</li>
+	<li>var horizontal is the width in grid units (not pixels)</li>
+	<li>var vertical is the height in grid units</li>
+	<li>The grid positions have to be multiplied by n to get the right positions for each element</li>
+	<li>To generate food in a RANDOM position, you need to use the Math.random() function, Math.floor(x) function, and n</li>
+	<li>The coordinates of the food should be inputted into the vars foodx and foody</li>
+	<li>Hint 1: make 2 variables that are equal to random grid units in the x axis and y axis</li>
+	<li>Hint 2: make sure the food doesn't spawn in a location that has a snake (use tangled(x,y) function)</li>
+	<li>Hint 3: floor (gridvar*random) and multiply by n to get grid positions</li>
+</ul>
+</p>
+</div>
+
+<div class="dir">
+<p class="step">Step 7 - Snake: Turn</p>
+<button class="next" onclick="next(12)">Next</button>
+<button class="previous" onclick="previous(12)">Previous</button>
+<br><br>
+<p>
+<ul>
+	<li>The snake's direction is based on an array [x,y]</li>
+	<li>You should be using some kind of keypress event</li>
+	<li>Hint 1: For each of the arrow keys, make a conditional statement that changes the direction of the snake</li>
+	<li>Hint 2: The directions are left: [-1, 0] up: [0, 1] right: [1, 0] down [0, -1]</li>
+</ul>
+</p>
+</div>
+
+<div class="dir">
+<p class="step">Step 8 - Snake: Move the Snake</p>
+<button class="previous" onclick="next(13)">Finish!</button>
+<button class="previous" onclick="previous(13)">Previous</button>
+<br><br>
+<ul>
+	<li>This requires the arrays posx and posy which store the x-values and y-values of each of the snake's parts</li>
+	<li>Each index of the arrays correspond with the order of the snake's parts<br>
+	((posx[0], posy[0]) is the coordinates of the first part of the snake)</li>
+	<li>There are two parts that you need to complete:<ul>
+		<li>First, if the snake runs into the food, make the length of the snake longer by 1 and generate food and add 1 to score</li>
+		<li>Second, if the snake doesn't run into the food, shift all parts of the snake by 1</li>
+	</ul></li>
+	<li>Hint 1: The variables for the new head are named newHeadX and newHeadY</li>
+	<li>Hint 2: Use unshift(x) to add the new head to the front of the lists and pop to remove the last value in the list (if no food)</li>
+</ul>
+</div>
+
+<!--End actual Snake coding-->
+
+
+<!--Begin last word, goodbye-->
+
+<div class="dir">
+<p class="step">You're Done!</p>
+<button class="previous" type="button" onclick="step1()">Step 1</button>
+<br><br>
+<p>Congratulations on finishing your Snake Game!</p>
+<br><br>
+<p>You can now save your code and open it whenever you want with your unique ID. We also recommend you save your code to a text file on your computer just in case.</p>
+<br><br>
+<p>Great job on finishing your Hour of Code project! We hope you had a great time and at the same time learned a lot about programming in JavaScript. Thank you for learning with us for an hour and we hope to see you next year!</p>
+</div>
+
+<!--End last word, goodbye-->
+
+
+</div>
+
+
+
+<div id="editor"><iframe id="js" src="http://js.do/"></iframe></div>
+
+
+
+</body>
+
+</html>

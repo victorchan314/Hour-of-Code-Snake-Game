@@ -1,0 +1,175 @@
+<html>
+
+
+
+<head>
+
+<title>Snake Game</title>
+
+<style>
+
+#container {
+	background-color:#EEEEFF;
+	width:100%;
+	height:100%;
+}
+
+.snake {
+	width:25px;
+	height:25px;
+	background-color:#0000FF;
+	position:absolute;
+}
+
+#eye {
+	width:5px;
+	height:5px;
+	background-color:#FFFFFF;
+	position:absolute;
+	left:10px;
+	top:10px;
+}
+
+#food {
+	width:25px;
+	height:25px;
+	background-color:#FF0000;
+	position:absolute;
+}
+
+#score {
+	font-size:50px;
+}
+
+</style>
+
+
+
+<script>
+
+var n = 25;
+
+var posx = [];
+var posy = [];
+var w = n * Math.floor(window.innerWidth/n - 1);
+var h = n * Math.floor(window.innerHeight/n - 1);
+var horizontal = w / n;
+var vertical = h / n;
+posx.push(n * Math.floor(horizontal/2));
+posy.push(n * Math.floor(vertical/2));
+
+var score = 0;
+var playing = true;
+
+var foodx = 0;
+var foody = 0;
+
+var direction = [1,0];
+var slither;
+
+function load(){
+	document.getElementById("container").style.width = w;
+	document.getElementById("container").style.height = h;
+	document.getElementsByClassName("snake")[0].style.left = posx[0];
+	document.getElementsByClassName("snake")[0].style.top = posy[0];
+	start();
+}
+
+function start(){
+	playing = true;
+	generateFood();
+	slither = setInterval(move,75);
+}
+
+function generateFood(){
+	<!--INSERT CODE FOR STEP 6 HERE-->
+}
+
+function move(){
+	newHeadX = posx[0] + n * direction[0];
+	newHeadY = posy[0] + n * direction[1];
+	if (newHeadX<0 || newHeadX>w || newHeadY<0 || newHeadY>h){//if the snake crashes into the wall
+		lose();
+	} else if (tangled(newHeadX,newHeadY)==true){//if the snake runs into itself
+		lose();
+	} else if(){
+		<!--CODE FOR EATING THE FOOD-->
+	} else(){
+		<!--CODE FOR MOVING WHEN NOT EATING FOOD-->
+	}
+	<!--COMPLETE CODE FOR IF/ELSE IF/ELSE STATEMENT FOR STEP 8 HERE-->
+	for (i=0;i<document.getElementsByClassName("snake").length;i++){
+		document.getElementsByClassName("snake")[i].style.left = posx[i];
+		document.getElementsByClassName("snake")[i].style.top = posy[i];
+	}
+}
+
+function tangled(x,y){
+	var within = false;
+	for (i=0;i<posx.length;i++){
+		if (x==posx[i]&&y==posy[i]){
+			within = true;
+			break;
+		}
+	}
+	return within;
+}
+
+function lose(){
+	playing = false;
+	clearInterval(slither);
+	document.getElementById("container").style.visibility = "hidden";
+	document.getElementById("score").style.visibility = "visible";
+	document.getElementById("score").innerHTML = "GAME OVER<br>Final Score: " + score + "<br>To play again, press SPACE";
+}
+
+function reset(){
+	document.getElementById("container").style.visibility = "visible";
+	posx = [];
+	posy = [];
+	posx.push(n * Math.floor(horizontal/2));
+	posy.push(n * Math.floor(vertical/2));
+	score = -1;
+	incrementScore();
+	direction = [1,0];
+	for (i=document.getElementsByClassName("snake").length-1;i>0;i--){
+	document.getElementById("container").removeChild(document.getElementsByClassName("snake")[i]);
+	}
+}
+
+function incrementScore(){
+	score += 1;
+	document.getElementById("score").innerHTML = "Score: " + score;
+}
+
+function KeyDetect(event){
+	<!--INSERT CODE FOR STEP 7 HERE-->
+}
+
+</script>
+
+
+
+</head>
+
+
+
+<body onload="load()" onkeydown="KeyDetect(event)">
+
+<div id="container">
+
+<p id="score">Score: 0</p>
+
+<div id="food"></div>
+
+<div class="snake" id="head">
+<div id="eye"></div>
+</div>
+
+</div>
+
+</body>
+
+
+
+</html>
